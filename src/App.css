@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+@font-face {
+  font-family: 'CustomFont';
+  src: local('CustomFont'), url(./assets/Boogaloo-Regular.ttf) format('truetype');
+}
