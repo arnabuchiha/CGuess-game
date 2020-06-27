@@ -6,6 +6,7 @@ body {
   font-family: 'CustomFont';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url(./assets/background.png) no-repeat center center fixed;
 }
 
 code {
