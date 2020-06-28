@@ -37,3 +37,9 @@
     transform: rotate(360deg);
   }
 }
+.bg_green{
+  background-color: #BED9A6;
+}
+.bg_yellow{
+  background-color: #E6D9A2;
+}
