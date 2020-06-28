@@ -4,11 +4,14 @@ import './App.css';
 function App() {
   return (
     <div className="container App" >
-  <div className="row">
+   
+    <img onClick={console.log("asdasd")} src={require("./assets/volume.png")} alt="Full Volume" style={{top:"10px",left:"10px",position:"absolute"}} ></img>
+
+  <div className="row" style={{marginTop:"10%"}}>
     <div className="col-sm">
       <h1 className="display-1">CGuess</h1>
       <div className="row h-100">
-        <div className="col mr-4 rounded bg_yellow">
+        <div className="col mr-4 rounded bg_yellow" style={{width:"50%"}}>
         <form>
           <div className="form-group mt-4 d-flex justify-content-center">
             <input type="text" className="form-control w-50" id="username" aria-describedby="usernameHelp" placeholder="Username"/>
