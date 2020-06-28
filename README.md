@@ -1,5 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+[![Run on Repl.it](https://repl.it/badge/github/arnabuchiha/CGuess-game)](https://repl.it/github/arnabuchiha/CGuess-game)
 ## Available Scripts
 
 In the project directory, you can run:
