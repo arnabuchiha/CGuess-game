@@ -2,7 +2,7 @@
   text-align: center;
    
 }
-
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,7 +36,7 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 .bg_green{
   background-color: #BED9A6;
 }

@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="container App" >
-   
+
     <img onClick={console.log("asdasd")} src={require("./assets/volume.png")} alt="Full Volume" style={{top:"10px",left:"10px",position:"absolute"}} ></img>
 
   <div className="row" style={{marginTop:"10%"}}>
