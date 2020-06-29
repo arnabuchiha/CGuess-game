@@ -1,19 +1,23 @@
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
-  font-family: 'CustomFont';
+  font-family: "CustomFont";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url(./assets/background.png) no-repeat center center fixed;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 @font-face {
-  font-family: 'CustomFont';
-  src: local('CustomFont'), url(./assets/Boogaloo-Regular.ttf) format('truetype');
+  font-family: "CustomFont";
+  src: url("./assets/Boogaloo-Regular.ttf")format('truetype');
+}
+
+html,
+body,
+#root,
+.App {
+  width: 100%;
+  height: 100%;
 }

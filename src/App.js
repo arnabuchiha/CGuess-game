@@ -1,32 +1,73 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.scss";
+import { Login, Register } from "./components/login/index";
 
-function App() {
-  return (
-    <div className="container App" >
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLogginActive: true
+    };
+  }
 
-    <img onClick={console.log("asdasd")} src={require("./assets/volume.png")} alt="Full Volume" style={{top:"10px",left:"10px",position:"absolute"}} ></img>
+  componentDidMount() {
+    //Add .right by default
+    this.rightSide.classList.add("right");
+  }
 
-  <div className="row" style={{marginTop:"10%"}}>
-    <div className="col-sm">
-      <h1 className="display-1">CGuess</h1>
-      <div className="row h-100">
-        <div className="col mr-4 rounded bg_yellow" style={{width:"50%"}}>
-        <form>
-          <div className="form-group mt-4 d-flex justify-content-center">
-            <input type="text" className="form-control w-50" id="username" aria-describedby="usernameHelp" placeholder="Username"/>
+  changeState() {
+    const { isLogginActive } = this.state;
+
+    if (isLogginActive) {
+      this.rightSide.classList.remove("right");
+      this.rightSide.classList.add("left");
+    } else {
+      this.rightSide.classList.remove("left");
+      this.rightSide.classList.add("right");
+    }
+    this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive }));
+  }
+
+  render() {
+    const { isLogginActive } = this.state;
+    const current = isLogginActive ? `How to Play?` : "Login";
+    const currentActive = isLogginActive ? "login" : "How to play?";
+    return (
+      <div className="App" >
+        <div className="login" >
+          <div className="container" style={{backgroundColor:"F4F3F0"}} ref={ref => (this.container = ref)}>
+            {isLogginActive && (
+              <Login containerRef={ref => (this.current = ref)} />
+            )}
+            {!isLogginActive && (
+              <Register containerRef={ref => (this.current = ref)} />
+            )}
           </div>
-          <button type="submit" className="btn shadow-sm btn-lg text-dark mb-4 bg_green">Play</button>
-          </form>
-        </div>
-        <div className="col ml-4 rounded bg_yellow" >
-          How to play?
+          <RightSide
+            current={current}
+            currentActive={currentActive}
+            containerRef={ref => (this.rightSide = ref)}
+            onClick={this.changeState.bind(this)}
+          />
         </div>
       </div>
-    </div>
-  </div>
-</div>
-  );
+    );
+  }
 }
+
+const RightSide = props => {
+  return (
+    <div
+      className="right-side"
+      ref={props.containerRef}
+      onClick={props.onClick}
+      style={{backgroundColor:"#E6D9A2",color:"black"}}
+    >
+      <div className="inner-container">
+        <div className="text">{props.current}</div>
+      </div>
+    </div>
+  );
+};
 
 export default App;
