@@ -2,12 +2,26 @@ import React from "react";
 import loginImg from "../../login.svg";
 import image from "../../assets/CGuess.png"
 import "./style.scss"
+import { Redirect } from "react-router-dom";
 export class Login extends React.Component {
   constructor(props) {
-    super(props); 
+    super(props);
+    this.state={
+      play:false
+    }
   }
+  clicked=(event)=>{
+    event.preventDefault();
+    this.setState({
+      play:true
+    })
+    // <Redirect to="/game"/>
 
+  }
   render() {
+    if(this.state.play)return(
+      <Redirect to="/game"/>
+    )
     return (
       <div className="base-container" ref={this.props.containerRef}>
         {/* <div className="header">Login</div> */}
@@ -26,7 +40,7 @@ export class Login extends React.Component {
           </div>
         </div>
         <div className="footer">
-          <button type="button" className="btn" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}}>
+          <button onClick={this.clicked} type="button" className="btn" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}}>
             Play
           </button>
         </div>

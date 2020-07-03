@@ -1,0 +1,17 @@
+.score{
+    background-color: #BED9A6;
+    height: 100vh;
+}
+.map{
+    background-color: #F4F3F0;
+    height: 100vh;
+}
+.chat{
+    background-color: #BED9A6;
+    height: 100vh;
+}
+.container1{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
