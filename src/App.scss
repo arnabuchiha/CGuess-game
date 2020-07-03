@@ -45,12 +45,13 @@
 //Login Main Container
 .login {
   width: 27em;
-  height: 40em;
+  height: 80vh;
   //min-height: 44em;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
   position: relative;
   z-index: 99;
   .container {

@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.scss";
 import { Login, Register } from "./components/login/index";
+import Routes from "./Routes";
+// import Routes from "./Routes";
 
 class App extends React.Component {
   constructor(props) {
@@ -34,6 +36,8 @@ class App extends React.Component {
     const currentActive = isLogginActive ? "login" : "How to play?";
     return (
       <div className="App" >
+        
+        {/* <Routes/> */}
         <div className="login" >
           <div className="container" style={{backgroundColor:"F4F3F0"}} ref={ref => (this.container = ref)}>
             {isLogginActive && (
