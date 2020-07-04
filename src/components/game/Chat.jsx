@@ -15,7 +15,7 @@ function Chat()
                 event.preventDefault();
                 return ;
             }
-        const final_msg=msgList+'\nTom Cruise : '+curr_msg;
+      
         // alert('hello');
         appendList(prevValue =>{
             return prevValue+'\nAnany : '+curr_msg;
@@ -29,10 +29,16 @@ function Chat()
         <p className="msg">
         {msgList}
         </p>
-        <form method="POST" onSubmit={handleClick}>
-            <input className="input-msg" type="text" name="msg" placeholder="Chat now" />
-            <button className="send-btn"  type="submit" ></button>
-        </form>        
+        
+        <form method="POST" onSubmit={handleClick} >
+            <div className="input-group mb-3">
+            <input className="form-control" id="inputPassword2 " type="text" name="msg" placeholder="Chat now" />
+            <div class="input-group-append">
+    <button class="btn btn-outline-secondary send-btn" type="submit">Send</button>
+        </div>
+            </div>
+        </form>
+                
     </div>);
 }
 

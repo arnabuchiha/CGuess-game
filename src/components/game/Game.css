@@ -68,14 +68,17 @@ ul{
 .send-btn{
     background: transparent; 
     margin-top: -1vh;
-    background-image: url("../../assets/send.png"); 
     background-size: cover; 
     background-position: center; 
     display: inline-block; 
-    border: none; 
-    width: 4.5vh; 
-    height: 4.5vh; 
     cursor: pointer;
-    display: flex;
-    float: right;
+    
+    
+}
+input.input-msg:focus{
+    outline-width: 0;
+    background-color: rgb(218, 218, 218);
+}
+button.send-btn:focus{
+    outline-width: 0;
 }
