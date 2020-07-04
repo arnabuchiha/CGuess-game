@@ -3,6 +3,7 @@ import "./Game.css"
 import Map from './Map';
 import clock from "../../assets/clock.png"
 import Score from './Score';
+import Chat from './Chat.jsx'
 class Game extends Component{
     constructor(){
         super();
@@ -39,7 +40,8 @@ class Game extends Component{
                             {this.state.fact}
                         </div>
                     </div>
-                    <div className="col-md-3 chat">Column3</div>
+                    <div className="col-md-3 chat"><Chat/>
+                    </div>
                 </div>
             </div>
         )
