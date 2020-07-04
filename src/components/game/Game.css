@@ -15,3 +15,14 @@
     padding-right: 15px;
     padding-left: 15px;
 }
+.bg-yellow{
+    background-color: #E6D9A2;
+}
+
+.font-size{
+    font-size: 25px;
+}
+.responsive-img {
+    height: auto;
+    max-width: 100%;
+  }

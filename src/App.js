@@ -35,7 +35,7 @@ class App extends React.Component {
     const current = isLogginActive ? `How to Play?` : "Login";
     const currentActive = isLogginActive ? "login" : "How to play?";
     return (
-      <div className="App" >
+      <div className="App container-fluid" >
         
         {/* <Routes/> */}
         <div className="login" >
