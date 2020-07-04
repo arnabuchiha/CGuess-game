@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./Game.css"
 import Map from './Map';
 import clock from "../../assets/clock.png"
+import Score from './Score';
 class Game extends Component{
     constructor(){
         super();
@@ -15,7 +16,9 @@ class Game extends Component{
         return(
             <div className="container-fluid">
                 <div className="row ">
-                    <div className="col-md-2 score"></div>
+                    <div className="col-md-2 score">
+                        <Score/>
+                    </div>
                     <div className="col-md map font-size">
                         <div className="d-flex justify-content-between">
                         <div className="float-left bg-yellow m-1 p-1" style={{height:"1%"}}>

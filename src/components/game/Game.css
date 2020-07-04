@@ -25,3 +25,24 @@
 .responsive-img {
     height: 40%;
   }
+
+@media only screen and (max-width:765px){
+    .score{
+        background-color: #BED9A6;
+        height: 100%;
+    }
+}
+.list{
+    background-color: #F4F3F0;
+    margin: 2%;
+    margin-top: 5%;
+    padding: 1%;
+    padding-left: 2%;
+    font-size: 25px;
+    border-radius: 10px;
+    min-width: 80%;
+
+}
+ul{
+    list-style-type:none;
+}
