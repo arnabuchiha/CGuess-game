@@ -1,8 +1,10 @@
 import React ,{ useState }  from "react";
+import sendImg from "../../assets/send.png"
+import "./Game.css"
 //Add username retrival and replace in chat  
 function Chat()
 {
-    const [msgList,appendList]= useState("Raj:Hi!!");
+    const [msgList,appendList]= useState("Raj : Hi!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna.");
     const [textField,changeText]=useState("Msg");
     function handleClick(event)
     {
@@ -13,42 +15,23 @@ function Chat()
                 event.preventDefault();
                 return ;
             }
-        const final_msg=msgList+'\nTom Cruise:'+curr_msg;
+        const final_msg=msgList+'\nTom Cruise : '+curr_msg;
         // alert('hello');
         appendList(prevValue =>{
-            return prevValue+'\nAnany:'+curr_msg;
+            return prevValue+'\nAnany : '+curr_msg;
         });   
         // appendList(<h1>{final_msg}</h1>);     
         event.target.reset()
         event.preventDefault();
     
     }
-    const mystyle={
-        marginTop:'1vh',
-        whiteSpace:'pre-wrap',
-        backgroundColor:'white',
-        height:'92vh',
-        borderRadius:'0.7vh',
-        fontSize:'40px'
-    }
-
-    const inputStyle={
-    
-        borderRadius:'2vh',
-        width:'35vh',
-        height:'5vh'
-    }
-    
-    const buttonStyle={
-
-    }
     return (<div>
-        <p style={mystyle}>
+        <p className="msg">
         {msgList}
         </p>
         <form method="POST" onSubmit={handleClick}>
-            <input style={inputStyle} type="text" name="msg" />
-            <button style={buttonStyle}  type="submit" >Send</button>
+            <input className="input-msg" type="text" name="msg" placeholder="Chat now" />
+            <button className="send-btn"  type="submit" ></button>
         </form>        
     </div>);
 }

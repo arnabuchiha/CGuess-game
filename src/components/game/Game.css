@@ -46,3 +46,36 @@
 ul{
     list-style-type:none;
 }
+.msg{
+    margin-top:1vh;
+    white-space:pre-wrap;
+    background-color:white;
+    height:92vh;
+    border-radius:0.7vh;
+    font-size:25px;
+    padding-left:2%;
+}
+.input-msg{
+    border-radius:2vh;
+    width:20vw;
+    height:5vh;
+    margin-top: -1vh;
+    border: none;
+    font-size: 20px;
+    padding-left: 1vh;
+
+}
+.send-btn{
+    background: transparent; 
+    margin-top: -1vh;
+    background-image: url("../../assets/send.png"); 
+    background-size: cover; 
+    background-position: center; 
+    display: inline-block; 
+    border: none; 
+    width: 4.5vh; 
+    height: 4.5vh; 
+    cursor: pointer;
+    display: flex;
+    float: right;
+}
