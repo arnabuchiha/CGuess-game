@@ -21,8 +21,8 @@ class Game extends Component{
                         <Score/>
                     </div>
                     <div className="col-md map font-size">
-                        <div className="d-flex justify-content-between">
-                        <div className="float-left bg-yellow m-1 p-1" style={{height:"1%"}}>
+                        <div className="d-flex justify-content-between" style={{marginBottom:"-2.5vh"}}>
+                        <div className="float-left bg-yellow m-1 p-1 rounded" style={{height:"1%"}}>
                             Round {this.state.round}
                         </div>
                         <div className="d-flex  m-1 p-1">
@@ -31,12 +31,12 @@ class Game extends Component{
                             <figcaption style={{fontSize:"15px"}}>20 sec</figcaption>
                             </figure>
                         </div>   
-                        <div className="float-right bg-yellow m-1 p-1" style={{height:"1%"}}>
+                        <div className="float-right bg-yellow m-1 p-1 rounded" style={{height:"1%"}}>
                             {this.state.city}
                         </div>
                         </div>
                         <Map/>
-                        <div className="bg-yellow mt-2 p-4" style={{height:"14%",overflowY:"scroll"}}>
+                        <div className="bg-yellow p-4" style={{marginTop:"2.5vh",height:"14%",overflowY:"scroll",borderRadius:"10px"}}>
                             {this.state.fact}
                         </div>
                     </div>

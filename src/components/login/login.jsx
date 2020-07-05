@@ -40,7 +40,7 @@ export class Login extends React.Component {
           </div>
         </div>
         <div className="footer">
-          <button onClick={this.clicked} type="button" className="btn" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}}>
+          <button onClick={this.clicked} type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}}>
             Play
           </button>
         </div>

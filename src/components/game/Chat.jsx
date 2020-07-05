@@ -31,10 +31,10 @@ function Chat()
         </p>
         
         <form method="POST" onSubmit={handleClick} >
-            <div className="input-group mb-3">
+            <div className="input-group input-msg">
             <input className="form-control" id="inputPassword2 " type="text" name="msg" placeholder="Chat now" />
-            <div class="input-group-append">
-    <button class="btn btn-outline-secondary send-btn" type="submit">Send</button>
+            <div className="input-group-append">
+    <button type="button" className="send-btn" type="submit">Send</button>
         </div>
             </div>
         </form>

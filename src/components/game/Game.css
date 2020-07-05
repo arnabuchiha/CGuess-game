@@ -54,25 +54,28 @@ ul{
     border-radius:0.7vh;
     font-size:25px;
     padding-left:2%;
+    overflow-y: scroll;
 }
 .input-msg{
-    border-radius:2vh;
+    /* border-radius:2vh;
     width:20vw;
-    height:5vh;
+    height:5vh; */
     margin-top: -1vh;
-    border: none;
-    font-size: 20px;
-    padding-left: 1vh;
 
 }
 .send-btn{
-    background: transparent; 
-    margin-top: -1vh;
+    background-color: #E6D9A2; 
+    /* margin-top: -1vh; */
     background-size: cover; 
     background-position: center; 
     display: inline-block; 
     cursor: pointer;
-    
+    /* height: 5%; */
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 2px;
+    font-size: 20px;
     
 }
 input.input-msg:focus{
@@ -82,3 +85,4 @@ input.input-msg:focus{
 button.send-btn:focus{
     outline-width: 0;
 }
+
