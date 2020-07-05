@@ -46,7 +46,11 @@ export class Login extends React.Component {
           <button onClick={this.clicked} type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}}>
             Play
           </button>
+          
         </div>
+        <button onClick={console.log("Hello")} type="button" className="instruct" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}}>
+            How to play?
+          </button>
       </div>
     );
   }
