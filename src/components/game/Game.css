@@ -55,6 +55,8 @@ ul{
     font-size:25px;
     padding-left:2%;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse
 }
 .input-msg{
     /* border-radius:2vh;
