@@ -19,9 +19,12 @@ export class Login extends React.Component {
 
   }
   render() {
-    if(this.state.play)return(
-      <Redirect to="/game"/>
-    )
+    if(this.state.play){
+      window.location.href="/game";
+    }
+    // return(
+    //   <Redirect to="/game"/>
+    // )
     return (
       <div className="base-container" ref={this.props.containerRef}>
         {/* <div className="header">Login</div> */}
