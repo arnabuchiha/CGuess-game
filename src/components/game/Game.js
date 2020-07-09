@@ -23,7 +23,8 @@ class Game extends Component{
                     <div className="col-md map font-size">
                         <div className="d-flex justify-content-between" style={{marginBottom:"-2.5vh"}}>
                         <div className="float-left bg-yellow m-1 p-1 rounded" style={{height:"1%"}}>
-                            Round {this.state.round}
+                            {/* Round {this.state.round} */}
+                            {this.props.location.nameprop}
                         </div>
                         <div className="d-flex  m-1 p-1">
                             <figure>

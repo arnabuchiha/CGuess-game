@@ -1,11 +1,19 @@
-import React ,{ useState }  from "react";
-import sendImg from "../../assets/send.png"
+import React ,{ useState,useEffect }  from "react";
+import sendImg from "../../assets/send.png";
+import socketIOClient from "socket.io-client";
 import "./Game.css"
+const ENDPOINT="localhost:4000";
 //Add username retrival and replace in chat  
 function Chat()
 {
     const [msgList,appendList]= useState("Raj : Hi!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna.");
     const [textField,changeText]=useState("Msg");
+    useEffect(() => {
+        const socket = socketIOClient(ENDPOINT);
+        socket.on("FromAPI", data => {
+          console.log(data);
+        });
+      }, []);
     function handleClick(event)
     {
          const curr_msg=event.target.msg.value;
