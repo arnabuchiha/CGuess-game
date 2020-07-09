@@ -33,6 +33,8 @@ export class Login extends React.Component {
     
     this.socket.emit('setUsername',document.getElementById('username').value);
     this.socket.on('userExists', (data) =>{
+      document.getElementById('msg').style.visibility="visible"
+      document.getElementById('msg').innerHTML=data;
       console.log(data);
    });
    this.socket.on('userSet', (data) =>{
@@ -55,6 +57,7 @@ export class Login extends React.Component {
             <div className="form-group">
               <input type="text" name="username" placeholder="username" id="username" />
             </div>
+    <label className="alert alert-danger" style={{visibility:"hidden",fontSize:"15px"}}id="msg"></label>
           </div>
         </div>
         <div className="footer">
