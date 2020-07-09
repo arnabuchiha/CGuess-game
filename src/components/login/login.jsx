@@ -2,6 +2,7 @@ import React from "react";
 import image from "../../assets/CGuess.png"
 import "./style.scss"
 import Modal from "../Modal/Modal"
+import  {Link } from "react-router-dom";
 export class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +34,7 @@ export class Login extends React.Component {
         {/* <div className="header">Login</div> */}
         <div className="content">
           <div className="image">
-            <img src={image} />
+            <img src={image}/>
           </div>
           <div className="form" >
             <div className="form-group">
@@ -42,9 +43,11 @@ export class Login extends React.Component {
           </div>
         </div>
         <div className="footer">
+        <Link to={'../game/Game?name="Hello"'}>
           <button onClick={this.clicked} type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}}>
             Play
           </button>
+          </Link>
           
         </div>
         <Modal show={this.state.show} handleClose={this.hideModal}>
