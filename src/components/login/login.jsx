@@ -1,6 +1,7 @@
 import React from "react";
 import image from "../../assets/CGuess.png"
-import "./style.scss"
+import "./style.scss";
+import {Redirect} from 'react-router-dom';
 import Modal from "../Modal/Modal"
 import socketIOClient from "socket.io-client";
 export class Login extends React.Component {
@@ -31,16 +32,21 @@ export class Login extends React.Component {
   };
   setUsername=()=>{
     
-    this.socket.emit('setUsername',document.getElementById('username').value);
-    this.socket.on('userExists', (data) =>{
-      document.getElementById('msg').style.visibility="visible"
-      document.getElementById('msg').innerHTML=data;
-      console.log(data);
-   });
-   this.socket.on('userSet', (data) =>{
-      this.user = data.username;
-      console.log(this.user);
-   });
+  //   this.socket.emit('setUsername',document.getElementById('username').value);
+  //   this.socket.on('userExists', (data) =>{
+  //     document.getElementById('msg').style.visibility="visible"
+  //     document.getElementById('msg').innerHTML=data;
+  //     console.log(data);
+  //  });
+  //  this.socket.on('userSet', (data) =>{
+  //     this.user = data.username;
+      
+  //  });
+     return(<Redirect to={{
+       pathname:"/game",
+       state:{username:document.getElementById('username').value}
+     }}
+     ></Redirect>)
   }
   render() {
     if(this.state.play){
