@@ -4,9 +4,9 @@ import socketIOClient from "socket.io-client";
 import "./Game.css"
 const ENDPOINT="localhost:4000";
 //Add username retrival and replace in chat  
-function Chat()
+function Chat(props)
 {
-    
+    console.log(props.username)
     const [msgList,appendList]= useState("Raj : Hi!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna.");
     const [textField,changeText]=useState("Msg");
     useEffect(() => {

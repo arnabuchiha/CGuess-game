@@ -24,6 +24,7 @@ class Game extends Component{
                         <div className="d-flex justify-content-between" style={{marginBottom:"-2.5vh"}}>
                         <div className="float-left bg-yellow m-1 p-1 rounded" style={{height:"1%"}}>
                             Round {this.state.round}
+                            {/* {this.props.location.nameprop} */}
                         </div>
                         <div className="d-flex  m-1 p-1">
                             <figure>
@@ -40,7 +41,7 @@ class Game extends Component{
                             {this.state.fact}
                         </div>
                     </div>
-                    <div className="col-md-3 chat"><Chat/>
+                    <div className="col-md-3 chat"><Chat username={this.props.location.nameprop}/>
                     </div>
                 </div>
             </div>
