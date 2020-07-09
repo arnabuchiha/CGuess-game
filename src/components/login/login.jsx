@@ -2,13 +2,18 @@ import React from "react";
 import image from "../../assets/CGuess.png"
 import "./style.scss"
 import Modal from "../Modal/Modal"
+import socketIOClient from "socket.io-client";
 export class Login extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state={
       play:false,
       show:false
     }
+    this.ENDPOINT="localhost:4000";
+    this.socket = socketIOClient(this.ENDPOINT);
+    this.user=null;
   }
   clicked=(event)=>{
     event.preventDefault();
@@ -24,6 +29,17 @@ export class Login extends React.Component {
   hideModal = () => {
     this.setState({ show: false });
   };
+  setUsername=()=>{
+    
+    this.socket.emit('setUsername',document.getElementById('username').value);
+    this.socket.on('userExists', (data) =>{
+      console.log(data);
+   });
+   this.socket.on('userSet', (data) =>{
+      this.user = data.username;
+      console.log(this.user);
+   });
+  }
   render() {
     if(this.state.play){
       window.location.href="/game";
@@ -37,12 +53,12 @@ export class Login extends React.Component {
           </div>
           <div className="form" >
             <div className="form-group">
-              <input type="text" name="username" placeholder="username" />
+              <input type="text" name="username" placeholder="username" id="username" />
             </div>
           </div>
         </div>
         <div className="footer">
-          <button onClick={this.clicked} type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}}>
+          <button onClick={this.setUsername} type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}}>
             Play
           </button>
           
