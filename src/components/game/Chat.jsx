@@ -13,7 +13,10 @@ function Chat(props)
         // const socket = socketIOClient(ENDPOINT);
         
         props.socket.on("newmsg", data => {
-          console.log(data);
+            console.log(data)
+            appendList(prevValue =>{
+                return prevValue+'\n'+data.user+' : '+data.message;
+            });  
         });
       }, []);
     function handleClick(event)
@@ -28,9 +31,9 @@ function Chat(props)
             }
         props.socket.emit('msg',{message:curr_msg,user:props.username});
         // alert('hello');
-        appendList(prevValue =>{
-            return prevValue+'\nAnany : '+curr_msg;
-        });   
+        // appendList(prevValue =>{
+        //     return prevValue+'\nAnany : '+curr_msg;
+        // });   
         // appendList(<h1>{final_msg}</h1>);     
         event.target.reset()
         
