@@ -4,6 +4,7 @@ import Map from './Map';
 import clock from "../../assets/clock.png"
 import Score from './Score';
 import Chat from './Chat.jsx'
+import socketIOClient from "socket.io-client";
 class Game extends Component{
     constructor(){
         super();
@@ -12,6 +13,8 @@ class Game extends Component{
             city:"_a__s",
             fact:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna."
         }
+        this.ENDPOINT="localhost:5000";
+        this.socket = socketIOClient(this.ENDPOINT);
     }
     render(){
         return(
@@ -41,7 +44,7 @@ class Game extends Component{
                             {this.state.fact}
                         </div>
                     </div>
-                    <div className="col-md-3 chat"><Chat username={this.props.location.nameprop}/>
+                    <div className="col-md-3 chat"><Chat socket={this.socket} username={this.props.location.nameprop}/>
                     </div>
                 </div>
             </div>

@@ -13,9 +13,7 @@ export class Login extends React.Component {
       show:false,
       name:''
     }
-    this.ENDPOINT="localhost:4000";
-    this.socket = socketIOClient(this.ENDPOINT);
-    this.user=null;
+    
   }
   clicked=(event)=>{
     event.preventDefault();
