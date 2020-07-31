@@ -16,12 +16,20 @@ class Game extends Component{
         this.ENDPOINT="localhost:5000";
         this.socket = socketIOClient(this.ENDPOINT);
     }
+    componentDidMount(){
+        this.socket.on("newmsg", data => {
+            console.log("sadasd")
+            // appendList(prevValue =>{
+            //     return prevValue+'\n'+data.user+' : '+data.message;
+            // });  
+        });
+    }
     render(){
         return(
             <div className="container-fluid">
                 <div className="row ">
                     <div className="col-md-2 score">
-                        <Score/>
+                        <Score socket={this.socket}/>
                     </div>
                     <div className="col-md map font-size">
                         <div className="d-flex justify-content-between" style={{marginBottom:"-2.5vh"}}>
