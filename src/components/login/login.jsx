@@ -4,6 +4,7 @@ import "./style.scss";
 import Modal from "../Modal/Modal";
 import socketIOClient from "socket.io-client";
 import {Link } from "react-router-dom";
+import Cookies from 'universal-cookie'
 export class Login extends React.Component {
   
   constructor(props) {
@@ -62,6 +63,8 @@ export class Login extends React.Component {
     //    state:{username:document.getElementById('username').value}
     //  }}
     //  ></Redirect>)
+    this.cookies=new Cookies();
+    this.cookies.set('username',this.state.name,{path:'/'});
   }
   render() {
     if(this.state.play){
@@ -82,8 +85,8 @@ export class Login extends React.Component {
           </div>
         </div>
         <div className="footer">
-        <Link to={{pathname:'/Game',nameprop:this.state.name}} onClick={this.setUsername}>
-          <button  type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}}>
+        <Link to={{pathname:'/Game',nameprop:this.state.name}}>
+          <button  type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}} onClick={this.setUsername}>
             Play
           </button>
           </Link>

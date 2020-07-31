@@ -5,9 +5,10 @@ import clock from "../../assets/clock.png"
 import Score from './Score';
 import Chat from './Chat.jsx'
 import socketIOClient from "socket.io-client";
+import Cookies from 'universal-cookie';
 class Game extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             round:1,
             city:"_a__s",
@@ -15,8 +16,11 @@ class Game extends Component{
         }
         this.ENDPOINT="localhost:5000";
         this.socket = socketIOClient(this.ENDPOINT);
+        this.cookies=new Cookies();
+        // this.cookies.set('username',this.props.location.nameprop,{path:'/'});
     }
     componentDidMount(){
+        
         this.socket.on("newmsg", data => {
             console.log("sadasd")
             // appendList(prevValue =>{
@@ -52,7 +56,7 @@ class Game extends Component{
                             {this.state.fact}
                         </div>
                     </div>
-                    <div className="col-md-3 chat"><Chat socket={this.socket} username={this.props.location.nameprop}/>
+                    <div className="col-md-3 chat"><Chat socket={this.socket} username={this.cookies.get('username')}/>
                     </div>
                 </div>
             </div>
