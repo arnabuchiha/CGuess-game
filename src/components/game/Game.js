@@ -20,7 +20,9 @@ class Game extends Component{
         // this.cookies.set('username',this.props.location.nameprop,{path:'/'});
     }
     componentDidMount(){
-        
+        this.socket.emit('setUsername',{
+            username:this.cookies.get('username')
+        })
         this.socket.on("newmsg", data => {
             console.log("sadasd")
             // appendList(prevValue =>{
