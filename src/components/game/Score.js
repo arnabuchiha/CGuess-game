@@ -6,19 +6,17 @@ class Score extends Component{
         super(props);
         this.state={
             players:[
+                
             ]
         }
         this.cookies=new Cookies();
         
     }
     componentDidMount(){
-        this.props.socket.on('userSet',data=>{
+        this.props.socket.on('scores',data=>{
             console.log(data)
             this.setState({
-                players:[...this.state.players,{
-                    name:data.username,
-                    score:0
-                }]
+                players:data
             })
         })
         this.props.socket.on('newscore',data=>{

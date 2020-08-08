@@ -29,6 +29,11 @@ class Game extends Component{
             //     return prevValue+'\n'+data.user+' : '+data.message;
             // });  
         });
+        this.socket.on("newFact",data=>{
+            this.setState({
+                fact:data
+            })
+        })
     }
     render(){
         return(
