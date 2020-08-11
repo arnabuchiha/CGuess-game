@@ -10,9 +10,10 @@ class Game extends Component{
     constructor(props){
         super(props);
         this.state={
-            round:1,
+            round:0,
             city:"_a__s",
-            fact:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna."
+            fact:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna.",
+            pageTime:'--'
         }
         this.ENDPOINT="localhost:5000";
         this.socket = socketIOClient(this.ENDPOINT);
@@ -29,11 +30,70 @@ class Game extends Component{
             //     return prevValue+'\n'+data.user+' : '+data.message;
             // });  
         });
-        this.socket.on("newFact",data=>{
+        // this.socket.on("newFact",data=>{
+        //     this.setState({
+        //         fact:data
+        //     })
+        // })
+
+        // this.socket.on("roomRound",data=>{
+        //     this.setState({
+        //         round:data
+        //     })
+        // })
+
+
+        // this.socket.on("roomCity",data=>{
+        //     this.setState({
+        //         city:data
+        //     })
+        // })
+
+
+        // this.socket.on("roomTime",(data) =>{
+            
+        //     var t=Number(data)
+        //    // alert(typeof(data))
+        //     setInterval(()=>{
+        //           //  alert(t);
+        //             if(t<0)
+        //             {
+        //             //    alert('HEYEYEYEY')
+        //                 clearInterval();
+        //             } 
+        //             t=t-1
+        //             this.setState({
+        //                 pageTime:t
+        //             })
+        //             // alert('HEY!!')
+
+        //     },1000)
+        // })
+            //extra added
+
+        this.socket.on("updates",(data) =>{
+            var t=Number(data.timer)
             this.setState({
-                fact:data
+                city:data.city,
+                fact:data.currentFact,
+                round:data.round,
+
             })
+
+         var xx=  setInterval(()=>{
+
+                if(t<=0)
+                    clearInterval(xx);
+                this.setState({
+                    pageTime:t--
+                })
+
+            },1000)
+
         })
+
+
+        // this.socket.on("round")
     }
     render(){
         return(
@@ -49,10 +109,11 @@ class Game extends Component{
                             {/* {this.props.location.nameprop} */}
                         </div>
                         <div className="d-flex  m-1 p-1">
-                            <figure>
+                            {/* <figure>
                             <img className="responsive-img" src={clock}></img>
                             <figcaption style={{fontSize:"15px"}}>20 sec</figcaption>
-                            </figure>
+                            </figure> */}
+                            <p>{this.state.pageTime}sec</p>
                         </div>   
                         <div className="float-right bg-yellow m-1 p-1 rounded" style={{height:"1%"}}>
                             {this.state.city}
