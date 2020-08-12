@@ -14,7 +14,7 @@ class Game extends Component{
             city:"_a__s",
             fact:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna."
         }
-        this.ENDPOINT="localhost:5000";
+        this.ENDPOINT="ws://cguess-backend.herokuapp.com/";
         this.socket = socketIOClient(this.ENDPOINT);
         this.cookies=new Cookies();
         // this.cookies.set('username',this.props.location.nameprop,{path:'/'});
