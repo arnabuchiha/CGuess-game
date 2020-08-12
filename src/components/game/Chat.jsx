@@ -16,7 +16,14 @@ function Chat(props)
             console.log(data)
             appendList(prevValue =>{
                 return prevValue+'\n'+data.user+' : '+data.message;
-            });  
+            });
+            
+        props.socket.on("joinMsg",data =>{
+            console.log('Join msg aaya!!')
+            appendList(prevValue =>{
+                return prevValue+'\n'+data.user+' has joined the Game.';
+            });
+        })
         });
       }, []);
     function handleClick(event)

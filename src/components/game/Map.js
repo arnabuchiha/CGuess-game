@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import socketIOClient from "socket.io-client";
 const GOOGLE_MAP_API_KEY='AIzaSyD_lT8RkN6KffGEfJ3xBcBgn2VZga-a05I';
 class Map extends Component{
     googleMapRef=React.createRef()
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             showMarker:true,
             lat:0,
             lng:0
         }
+
+        this.ENDPOINT="localhost:5000";
+        this.socket = socketIOClient(this.ENDPOINT);
         this.createMarker=this.createMarker.bind(this)
         
     }
@@ -28,8 +32,11 @@ class Map extends Component{
             this.geocoder = new window.google.maps.Geocoder;
             this.googleMap.addListener('click', (mapsMouseEvent)=>{
                 // console.log(mapsMouseEvent.latLng.lng())
+                console.log(mapsMouseEvent)
                 var position = {lat: mapsMouseEvent.latLng.lat(), lng: mapsMouseEvent.latLng.lng()};
                 console.log(position)
+                this.socket.emit('mapclicked',{pos:position})
+                
                 var marker=new window.google.maps.Marker({
                     position: position,
                     map: this.googleMap,
