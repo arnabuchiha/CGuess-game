@@ -12,7 +12,6 @@ class Map extends Component{
         }
 
         this.ENDPOINT="localhost:5000";
-        this.socket = socketIOClient(this.ENDPOINT);
         this.createMarker=this.createMarker.bind(this)
         
     }
@@ -29,13 +28,27 @@ class Map extends Component{
             this.googleMap = this.createGoogleMap()
             // this.googleMap.set('styled_map', this.styledMapType);
             // this.googleMap.setMapTypeId('styled_map');
-            this.geocoder = new window.google.maps.Geocoder;
+            this.geocoder = new window.google.maps.Geocoder();
             this.googleMap.addListener('click', (mapsMouseEvent)=>{
+
+        
+                this.geocoder.geocode({
+                    'latLng': mapsMouseEvent.latLng
+                  }, function(results, status) {
+                    if (status == window.google.maps.GeocoderStatus.OK) {
+                      if (results[0]) {
+                         
+                        alert(results[0].formatted_address)
+                    }
+                      
+                    }
+                  });
                 // console.log(mapsMouseEvent.latLng.lng())
                 console.log(mapsMouseEvent)
                 var position = {lat: mapsMouseEvent.latLng.lat(), lng: mapsMouseEvent.latLng.lng()};
+                this.props.socket.emit('mapclicked',{location:position})
                 console.log(position)
-                this.socket.emit('mapclicked',{pos:position})
+                
                 
                 var marker=new window.google.maps.Marker({
                     position: position,
