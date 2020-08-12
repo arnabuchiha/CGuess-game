@@ -119,7 +119,7 @@ class Game extends Component{
                             {this.state.city}
                         </div>
                         </div>
-                        <Map/>
+                        <Map socket={this.socket} />
                         <div className="bg-yellow p-4" style={{marginTop:"2.5vh",height:"14%",overflowY:"scroll",borderRadius:"10px"}}>
                             {this.state.fact}
                         </div>
