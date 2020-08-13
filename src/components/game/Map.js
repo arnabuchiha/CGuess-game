@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import socketIOClient from "socket.io-client";
+import Cookies from 'universal-cookie';
 const GOOGLE_MAP_API_KEY='AIzaSyD_lT8RkN6KffGEfJ3xBcBgn2VZga-a05I';
 class Map extends Component{
     googleMapRef=React.createRef()
@@ -8,9 +8,10 @@ class Map extends Component{
         this.state={
             showMarker:true,
             lat:0,
-            lng:0
+            lng:0,
+            markers:[]
         }
-
+        this.cookies=new Cookies();
         this.ENDPOINT="localhost:5000";
         this.createMarker=this.createMarker.bind(this)
         
@@ -46,7 +47,7 @@ class Map extends Component{
                 // console.log(mapsMouseEvent.latLng.lng())
                 console.log(mapsMouseEvent)
                 var position = {lat: mapsMouseEvent.latLng.lat(), lng: mapsMouseEvent.latLng.lng()};
-                this.props.socket.emit('mapclicked',{location:position})
+                this.props.socket.emit('mapclicked',{location:position,username:this.cookies.get('username')})
                 console.log(position)
                 
                 
@@ -67,6 +68,14 @@ class Map extends Component{
             });
             
 
+        })
+        this.props.socket.on('markers',data=>{
+            this.setState({
+                markers:data
+            })
+            this.state.markers.forEach(element=>{
+                this.createMarker(element.location)
+            })
         })
         
     }
