@@ -10,7 +10,6 @@ class Score extends Component{
             ]
         }
         this.cookies=new Cookies();
-        
     }
     componentDidMount(){
         this.props.socket.on('scores',data=>{

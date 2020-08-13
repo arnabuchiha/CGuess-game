@@ -1,32 +1,33 @@
-import React ,{ useState,useEffect }  from "react";
+import React ,{ Component }  from "react";
 import sendImg from "../../assets/send.png";
 import socketIOClient from "socket.io-client";
 import "./Game.css"
 const ENDPOINT="localhost:5000";
 //Add username retrival and replace in chat  
-function Chat(props)
-{
-    console.log(props.username)
-    const [msgList,appendList]= useState("Raj : Hi!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna.");
-    const [textField,changeText]=useState("Msg");
-    useEffect(() => {
-        // const socket = socketIOClient(ENDPOINT);
-        
-        props.socket.on("newmsg", data => {
+class Chat extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            msgList:"Raj : Hi!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna.",
+            textField:"Msg"
+        }
+    }
+    componentDidMount(){
+        this.props.socket.on("newmsg", data => {
             console.log(data)
-            appendList(prevValue =>{
-                return prevValue+'\n'+data.user+' : '+data.message;
-            });
+            this.setState({
+                msgList:this.state.msgList+'\n'+data.user+' : '+data.message
+            })
             
-        props.socket.on("joinMsg",data =>{
+        this.props.socket.on("joinMsg",data =>{
             console.log('Join msg aaya!!')
-            appendList(prevValue =>{
-                return prevValue+'\n'+data.user+' has joined the Game.';
-            });
+            this.setState({
+                msgList:this.state.msgList+'\n'+data.user+' has joined the game'
+            })
         })
         });
-      }, []);
-    function handleClick(event)
+    }
+    handleClick=(event)=>
     {
         event.preventDefault();
          const curr_msg=event.target.msg.value;
@@ -36,7 +37,7 @@ function Chat(props)
                 event.preventDefault();
                 return ;
             }
-        props.socket.emit('msg',{message:curr_msg,user:props.username});
+        this.props.socket.emit('msg',{message:curr_msg,user:this.props.username});
         // alert('hello');
         // appendList(prevValue =>{
         //     return prevValue+'\nAnany : '+curr_msg;
@@ -46,21 +47,23 @@ function Chat(props)
         
     
     }
-    return (<div>
-        <p className="msg">
-        {msgList}
-        </p>
-        
-        <form onSubmit={handleClick} >
-            <div className="input-group input-msg">
-            <input className="form-control" id="inputPassword2 " type="text" name="msg" placeholder="Chat now" />
-            <div className="input-group-append">
-    <button type="button" className="send-btn" type="submit">Send</button>
-        </div>
+    render(){
+        return (<div>
+            <p className="msg">
+            {this.state.msgList}
+            </p>
+            
+            <form onSubmit={(e)=>this.handleClick(e)} >
+                <div className="input-group input-msg">
+                <input className="form-control" id="inputPassword2 " type="text" name="msg" placeholder="Chat now" />
+                <div className="input-group-append">
+        <button type="button" className="send-btn" type="submit">Send</button>
             </div>
-        </form>
-                
-    </div>);
+                </div>
+            </form>
+                    
+        </div>);
+    }
 }
 
 export default Chat;

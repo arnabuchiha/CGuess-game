@@ -15,7 +15,7 @@ class Game extends Component{
             fact:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna.",
             pageTime:'--'
         }
-        this.ENDPOINT="ws://cguess-backend.herokuapp.com/";
+        this.ENDPOINT="localhost:5000";
         this.socket = socketIOClient(this.ENDPOINT);
         this.cookies=new Cookies();
         // this.cookies.set('username',this.props.location.nameprop,{path:'/'});
@@ -24,52 +24,6 @@ class Game extends Component{
         this.socket.emit('setUsername',{
             username:this.cookies.get('username')
         })
-        this.socket.on("newmsg", data => {
-            console.log("sadasd")
-            // appendList(prevValue =>{
-            //     return prevValue+'\n'+data.user+' : '+data.message;
-            // });  
-        });
-        // this.socket.on("newFact",data=>{
-        //     this.setState({
-        //         fact:data
-        //     })
-        // })
-
-        // this.socket.on("roomRound",data=>{
-        //     this.setState({
-        //         round:data
-        //     })
-        // })
-
-
-        // this.socket.on("roomCity",data=>{
-        //     this.setState({
-        //         city:data
-        //     })
-        // })
-
-
-        // this.socket.on("roomTime",(data) =>{
-            
-        //     var t=Number(data)
-        //    // alert(typeof(data))
-        //     setInterval(()=>{
-        //           //  alert(t);
-        //             if(t<0)
-        //             {
-        //             //    alert('HEYEYEYEY')
-        //                 clearInterval();
-        //             } 
-        //             t=t-1
-        //             this.setState({
-        //                 pageTime:t
-        //             })
-        //             // alert('HEY!!')
-
-        //     },1000)
-        // })
-            //extra added
 
         this.socket.on("updates",(data) =>{
             var t=Number(data.timer)
@@ -109,11 +63,11 @@ class Game extends Component{
                             {/* {this.props.location.nameprop} */}
                         </div>
                         <div className="d-flex  m-1 p-1">
-                            {/* <figure>
+                            <figure>
                             <img className="responsive-img" src={clock}></img>
-                            <figcaption style={{fontSize:"15px"}}>20 sec</figcaption>
-                            </figure> */}
-                            <p>{this.state.pageTime}sec</p>
+                            <figcaption style={{fontSize:"15px"}}>{this.state.pageTime}sec</figcaption>
+                            </figure>
+                            {/* <p>{this.state.pageTime}sec</p> */}
                         </div>   
                         <div className="float-right bg-yellow m-1 p-1 rounded" style={{height:"1%"}}>
                             {this.state.city}

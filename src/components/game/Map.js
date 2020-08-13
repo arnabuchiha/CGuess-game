@@ -38,7 +38,7 @@ class Map extends Component{
                     if (status == window.google.maps.GeocoderStatus.OK) {
                       if (results[0]) {
                          
-                        alert(results[0].formatted_address)
+                        // alert(results[0].formatted_address)
                     }
                       
                     }
