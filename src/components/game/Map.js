@@ -57,21 +57,6 @@ class Map extends Component{
                 this.props.socket.emit('mapclicked',{location:position,username:this.cookies.get('username')})
                 console.log(position)
                 
-                
-                // var marker=new window.google.maps.Marker({
-                //     position: position,
-                //     map: this.googleMap,
-                // })
-                // this.geocoder.geocode({'location':mapsMouseEvent.latLng},(results,status)=>{
-                //     if (status === 'OK'){
-                //         var contentString=(`<div style="font-family: 'CustomFont';">${results[0].formatted_address}</div>`)
-                //         var infowindow=new window.google.maps.InfoWindow({
-                //             content:contentString
-                //         });
-                //         infowindow.open(this.googleMap, marker);
-                //         console.log(results);
-                //     }
-                // })
             });
             
 
