@@ -14,6 +14,13 @@ class Map extends Component{
         this.cookies=new Cookies();
         this.ENDPOINT="localhost:5000";
         this.createMarker=this.createMarker.bind(this)
+        this.color=["yellow",		 
+            "blue",		 
+            "green",		 
+            "lightblue",		 
+            "orange",	 
+            "pink",		 
+            "purple"]
         
     }
     componentDidMount() {
@@ -51,34 +58,39 @@ class Map extends Component{
                 console.log(position)
                 
                 
-                var marker=new window.google.maps.Marker({
-                    position: position,
-                    map: this.googleMap,
-                })
-                this.geocoder.geocode({'location':mapsMouseEvent.latLng},(results,status)=>{
-                    if (status === 'OK'){
-                        var contentString=(`<div style="font-family: 'CustomFont';">${results[0].formatted_address}</div>`)
-                        var infowindow=new window.google.maps.InfoWindow({
-                            content:contentString
-                        });
-                        infowindow.open(this.googleMap, marker);
-                        console.log(results);
-                    }
-                })
+                // var marker=new window.google.maps.Marker({
+                //     position: position,
+                //     map: this.googleMap,
+                // })
+                // this.geocoder.geocode({'location':mapsMouseEvent.latLng},(results,status)=>{
+                //     if (status === 'OK'){
+                //         var contentString=(`<div style="font-family: 'CustomFont';">${results[0].formatted_address}</div>`)
+                //         var infowindow=new window.google.maps.InfoWindow({
+                //             content:contentString
+                //         });
+                //         infowindow.open(this.googleMap, marker);
+                //         console.log(results);
+                //     }
+                // })
             });
             
 
         })
         this.props.socket.on('markers',data=>{
-            this.setState({
-                markers:data
-            })
-            this.state.markers.forEach(element=>{
-                this.createMarker(element.location)
+            this.setMapOnAll(null);
+            var i=0;
+            data.forEach(element=>{
+                this.addMarker(element.location,element.username,this.color[i]);
+                i+=1;
             })
         })
         
     }
+    setMapOnAll=(map)=>{
+        for (let i = 0; i < this.state.markers.length; i++) {
+            this.state.markers[i].setMap(map);
+        }
+      }
     createGoogleMap = () =>
     new window.google.maps.Map(this.googleMapRef.current, {
     zoom: 5,
@@ -267,7 +279,25 @@ class Map extends Component{
         position: position,
         map: this.googleMap,
     })
-  
+    addMarker=(location,username,color) =>{
+        let url = "http://maps.google.com/mapfiles/ms/icons/";
+        url += color + "-dot.png";
+        const marker = new window.google.maps.Marker({
+          position: location,
+          icon:{
+              url:url
+          },
+          map: this.googleMap
+        });
+        var contentString=(`<div style="font-family: 'CustomFont';">${username}</div>`)
+        var infowindow=new window.google.maps.InfoWindow({
+            content:contentString
+        });
+        infowindow.open(this.googleMap, marker);
+        this.setState({
+            markers:[...this.state.markers,marker]
+        })
+      }
     render() {
       return (
         <div
