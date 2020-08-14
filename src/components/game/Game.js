@@ -6,6 +6,7 @@ import Score from './Score';
 import Chat from './Chat.jsx'
 import socketIOClient from "socket.io-client";
 import Cookies from 'universal-cookie';
+
 class Game extends Component{
     constructor(props){
         super(props);
@@ -20,11 +21,12 @@ class Game extends Component{
         this.cookies=new Cookies();
         // this.cookies.set('username',this.props.location.nameprop,{path:'/'});
     }
+    
     componentDidMount(){
         this.socket.emit('setUsername',{
             username:this.cookies.get('username')
         })
-
+        
         this.socket.on("updates",(data) =>{
             var t=Number(data.timer)
             this.setState({
@@ -73,6 +75,7 @@ class Game extends Component{
                             {this.state.city}
                         </div>
                         </div>
+                        
                         <Map socket={this.socket} />
                         <div className="bg-yellow p-4" style={{marginTop:"2.5vh",height:"14%",overflowY:"scroll",borderRadius:"10px"}}>
                             {this.state.fact}
