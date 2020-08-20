@@ -19,6 +19,7 @@ class Score extends Component{
     
       hideModal = () => {
         this.setState({ showResult: false });
+        window.location.href="/"
       };
     componentDidMount(){
         this.props.socket.on('scores',data=>{
@@ -31,6 +32,7 @@ class Score extends Component{
             this.setState({
                 showResult:true
             })
+            this.winnerFunc();
         })
         this.props.socket.on('newscore',data=>{
             console.log(data);
@@ -47,15 +49,15 @@ class Score extends Component{
         })
     }
     winnerFunc=()=>{
-        var score=-1;
+        this.score=-1;
         this.winner="Nobody";
+        console.log(this.state.players)
         this.state.players.forEach(e=>{
-            if(e.score>=score){
-                this.winner=e.username;
-                score=e.score;
+            if(e.score>=this.score){
+                this.winner=e.name;
+                this.score=e.score;
             }
         })
-        return this.winner;
     }
     render(){
         return(
@@ -67,8 +69,9 @@ class Score extends Component{
                     </li>
                     ))}
                 </ul>
-                <Modal show={this.state.showResult} handleClose={this.hideModal}>
-                    <p>{this.winnerFunc} is the winner!!</p>
+                <Modal show={this.state.showResult}>
+                    <p>{this.winner} is the winner!!</p>
+                    <button onClick={this.hideModal} id="modal-close">close</button>
                 </Modal>
                 {/* <div>
                 <p>When its your turn to draw, you will have to choose a word from three options and visualize that word in 80 seconds, alternatively when somebody else is drawing you have to type your guess into the chat to gain points, be quick, the earlier you guess a word the more points you get!</p>

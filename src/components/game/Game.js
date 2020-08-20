@@ -6,7 +6,7 @@ import Score from './Score';
 import Chat from './Chat.jsx'
 import socketIOClient from "socket.io-client";
 import Cookies from 'universal-cookie';
-
+import Modal from "../Modal/Modal";
 class Game extends Component{
     constructor(props){
         super(props);
@@ -14,14 +14,25 @@ class Game extends Component{
             round:0,
             city:"_a__s",
             fact:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna.",
-            pageTime:'--'
+            pageTime:'--',
+            showFact:'Waiting',
+            showModal:false
         }
         this.ENDPOINT="localhost:5000";
         this.socket = socketIOClient(this.ENDPOINT);
         this.cookies=new Cookies();
         // this.cookies.set('username',this.props.location.nameprop,{path:'/'});
     }
+    showModal = (num) => {
+        this.setState({ 
+                showModal: true,
+                showFact:this.state.fact[num]
+            });
+      };
     
+      hideModal = () => {
+        this.setState({ showModal: false });
+      };
     componentDidMount(){
         this.socket.emit('setUsername',{
             username:this.cookies.get('username')
@@ -29,6 +40,7 @@ class Game extends Component{
         
         this.socket.on("updates",(data) =>{
             var t=Number(data.timer)
+            console.log(data)
             this.setState({
                 city:data.city,
                 fact:data.currentFact,
@@ -78,8 +90,17 @@ class Game extends Component{
                         
                         <Map socket={this.socket} />
                         <div className="bg-yellow p-4" style={{marginTop:"2.5vh",height:"14%",overflowY:"scroll",borderRadius:"10px"}}>
-                            {this.state.fact}
+                            <button onClick={()=>this.showModal(1)}>Clue 1</button>
+                            <button onClick={()=>this.showModal(2)}>Clue 2</button>
+                            <button onClick={()=>this.showModal(3)}>Clue 3</button>
                         </div>
+                        <Modal show={this.state.showModal}>
+                            <button onClick={this.hideModal} type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <img style={{margin:"auto",display:"block",maxWidth:"80vw",maxHeight:"80vh"}} src={this.state.showFact}/>
+                            {/* <button onClick={this.hideModal} id="modal-close">close</button> */}
+                        </Modal>
                     </div>
                     <div className="col-md-3 chat"><Chat socket={this.socket} username={this.cookies.get('username')}/>
                     </div>

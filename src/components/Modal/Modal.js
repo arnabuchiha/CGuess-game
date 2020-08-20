@@ -14,7 +14,7 @@ class Modal extends Component {
       <div className={this.showHideClassName}>
         <section className="modal-main">
           {this.props.children}
-          <button onClick={this.props.handleClose} id="modal-close">close</button>
+          
         </section>
       </div>
     );
