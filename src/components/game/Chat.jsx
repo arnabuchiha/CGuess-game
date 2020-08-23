@@ -8,7 +8,7 @@ class Chat extends Component{
     constructor(props){
         super(props);
         this.state={
-            msgList:"Raj : Hi!!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna.",
+            msgList:"Welcome in CGuess!! Enjoy!!",
             textField:"Msg"
         }
     }

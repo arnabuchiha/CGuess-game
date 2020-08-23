@@ -3,16 +3,21 @@ import "./modal.css";
 class Modal extends Component {
   constructor(props){
     super(props);
-    console.log(props)
-    
   }
 
   render(){
-    this.showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
-    console.log(this.props.show)
+    
+    if(this.props.imageCSS){
+      this.section="";
+      this.showHideClassName = this.props.show ? "modalImage display-block" : "modalImage display-none";
+    }
+    else{
+      this.section="modal-main";
+      this.showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
+    }
     return (
       <div className={this.showHideClassName}>
-        <section className="modal-main">
+        <section className={this.section}>
           {this.props.children}
           
         </section>

@@ -23,7 +23,6 @@ class Score extends Component{
       };
     componentDidMount(){
         this.props.socket.on('scores',data=>{
-            console.log(data)
             this.setState({
                 players:data
             })
@@ -35,7 +34,6 @@ class Score extends Component{
             this.winnerFunc();
         })
         this.props.socket.on('newscore',data=>{
-            console.log(data);
             this.setState(state=>{
                 const list=[...state.players]
                 list.forEach(i=>{
@@ -51,7 +49,6 @@ class Score extends Component{
     winnerFunc=()=>{
         this.score=-1;
         this.winner="Nobody";
-        console.log(this.state.players)
         this.state.players.forEach(e=>{
             if(e.score>=this.score){
                 this.winner=e.name;

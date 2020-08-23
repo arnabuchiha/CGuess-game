@@ -21,12 +21,42 @@ class Game extends Component{
         this.ENDPOINT="localhost:5000";
         this.socket = socketIOClient(this.ENDPOINT);
         this.cookies=new Cookies();
+        this.slide=0;
         // this.cookies.set('username',this.props.location.nameprop,{path:'/'});
+    }
+    plusSlides=(num)=>{
+        if(num===-1){
+            if(this.slide===0){
+                this.setState({
+                    showFact:this.state.fact[3]
+                });
+                this.slide=3;
+            }
+            else{
+                this.setState({
+                    showFact:this.state.fact[--this.slide]
+                });
+            }
+        }
+        else{
+            if(this.slide===3){
+                this.setState({
+                    showFact:this.state.fact[0]
+                });
+                this.slide=0;
+            }
+            else{
+                this.setState({
+                    showFact:this.state.fact[++this.slide]
+                });
+            }
+        }
+        
     }
     showModal = (num) => {
         this.setState({ 
                 showModal: true,
-                showFact:this.state.fact[num]
+                showFact:this.state.fact[this.slide]
             });
       };
     
@@ -40,7 +70,6 @@ class Game extends Component{
         
         this.socket.on("updates",(data) =>{
             var t=Number(data.timer)
-            console.log(data)
             this.setState({
                 city:data.city,
                 fact:data.currentFact,
@@ -88,18 +117,21 @@ class Game extends Component{
                         </div>
                         </div>
                         
-                        <Map socket={this.socket} />
-                        <div className="bg-yellow p-4" style={{marginTop:"2.5vh",height:"14%",overflowY:"scroll",borderRadius:"10px"}}>
-                            <button onClick={()=>this.showModal(1)}>Clue 1</button>
-                            <button onClick={()=>this.showModal(2)}>Clue 2</button>
-                            <button onClick={()=>this.showModal(3)}>Clue 3</button>
-                        </div>
-                        <Modal show={this.state.showModal}>
-                            <button onClick={this.hideModal} type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <Map style={{position:"relative"}} socket={this.socket} />
+                            <button  type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black",fontSize:"16px",width:"100%",marginTop:"4%"}} onClick={()=>this.showModal(0)}>
+                                Show Clues
+                            </button>
+                        <Modal show={this.state.showModal} imageCSS={true}>
+                            <button onClick={this.hideModal} type="button" class="close cursor" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
-                            <img style={{margin:"auto",display:"block",maxWidth:"80vw",maxHeight:"80vh"}} src={this.state.showFact}/>
+                            <div className="modal-content">
+                            
+                            <img style={{margin:"auto",display:"block",maxWidth:"100%",maxHeight:"80vh",objectFit:"contain"}} src={this.state.showFact}/>
                             {/* <button onClick={this.hideModal} id="modal-close">close</button> */}
+                            <a className="prev" onClick={()=>this.plusSlides(-1)}>&#10094;</a>
+                            <a className="next" onClick={()=>this.plusSlides(1)}>&#10095;</a>
+                            </div>
                         </Modal>
                     </div>
                     <div className="col-md-3 chat"><Chat socket={this.socket} username={this.cookies.get('username')}/>
