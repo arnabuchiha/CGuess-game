@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
 import "./Game.css";
 import Modal from "../Modal/Modal";
+import winnerImage from "../../assets/winner.png"
 class Score extends Component{
     constructor(props){
         super(props);
@@ -66,9 +67,12 @@ class Score extends Component{
                     </li>
                     ))}
                 </ul>
-                <Modal show={this.state.showResult}>
-                    <p>{this.winner} is the winner!!</p>
-                    <button onClick={this.hideModal} id="modal-close">close</button>
+                <Modal show={this.state.showResult} imageCSS={"winnerModal"}>
+                    <div className="modal-top">
+                        <img class="modal-icon u-imgResponsive" src="https://dl.dropboxusercontent.com/s/e1t2hhowjcrs7f5/100daysui_100icon.png" alt="Trophy" />
+                        <div class="modal-header">{this.winner} is the winner!!</div>
+                        <button style={{marginBottom:"0px"}} className="send-btn modal-icon" onClick={this.hideModal} id="modal-close">close</button>
+                    </div>
                 </Modal>
                 {/* <div>
                 <p>When its your turn to draw, you will have to choose a word from three options and visualize that word in 80 seconds, alternatively when somebody else is drawing you have to type your guess into the chat to gain points, be quick, the earlier you guess a word the more points you get!</p>

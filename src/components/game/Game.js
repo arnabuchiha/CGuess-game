@@ -121,7 +121,7 @@ class Game extends Component{
                             <button  type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black",fontSize:"16px",width:"100%",marginTop:"4%"}} onClick={()=>this.showModal(0)}>
                                 Show Clues
                             </button>
-                        <Modal show={this.state.showModal} imageCSS={true}>
+                        <Modal show={this.state.showModal} imageCSS={"modalImage"}>
                             <button onClick={this.hideModal} type="button" class="close cursor" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>

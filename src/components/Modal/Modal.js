@@ -9,7 +9,7 @@ class Modal extends Component {
     
     if(this.props.imageCSS){
       this.section="";
-      this.showHideClassName = this.props.show ? "modalImage display-block" : "modalImage display-none";
+      this.showHideClassName = this.props.show ? this.props.imageCSS+" display-block" : this.props.imageCSS+" display-none";
     }
     else{
       this.section="modal-main";
