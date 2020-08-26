@@ -10,6 +10,10 @@ import Modal from "../Modal/Modal";
 class Game extends Component{
     constructor(props){
         super(props);
+        if(this.props.location.bclick===undefined )
+        {
+            window.location.href = '/';
+        }
         this.state={
             round:0,
             city:"_a__s",
@@ -107,7 +111,7 @@ class Game extends Component{
                         </div>
                         <div className="d-flex  m-1 p-1">
                             <figure>
-                            <img className="responsive-img" src={clock}></img>
+                            <img className="responsive-img" src={clock} alt=""></img>
                             <figcaption style={{fontSize:"15px"}}>{this.state.pageTime}sec</figcaption>
                             </figure>
                             {/* <p>{this.state.pageTime}sec</p> */}
@@ -127,9 +131,12 @@ class Game extends Component{
                             </button>
                             <div className="modal-content">
                             
-                            <img style={{margin:"auto",display:"block",maxWidth:"100%",maxHeight:"80vh",objectFit:"contain"}} src={this.state.showFact}/>
+                    
+                            <img alt="" style={{margin:"auto",display:"block",maxWidth:"100%",maxHeight:"80vh",objectFit:"contain"}} src={this.state.showFact}/>
                             {/* <button onClick={this.hideModal} id="modal-close">close</button> */}
-                            <a className="prev" onClick={()=>this.plusSlides(-1)}>&#10094;</a>
+                                   
+                            <a   className="prev" onClick={()=>this.plusSlides(-1)}>&#10094;</a>
+                
                             <a className="next" onClick={()=>this.plusSlides(1)}>&#10095;</a>
                             </div>
                         </Modal>

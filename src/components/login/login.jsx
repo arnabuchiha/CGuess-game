@@ -2,7 +2,7 @@ import React from "react";
 import image from "../../assets/CGuess.png"
 import "./style.scss";
 import Modal from "../Modal/Modal";
-import socketIOClient from "socket.io-client";
+// import socketIOClient from "socket.io-client";
 import {Link } from "react-router-dom";
 import Cookies from 'universal-cookie'
 export class Login extends React.Component {
@@ -12,7 +12,8 @@ export class Login extends React.Component {
     this.state={
       play:false,
       show:false,
-      name:''
+      name:'',
+      url:'/'
     }
     
   }
@@ -31,8 +32,22 @@ export class Login extends React.Component {
     
   // }
   change=(e)=>{
+
+
+    if(e.target.value.length>0)
+    {
+      this.setState({
+        url:'/game'
+      })
+    }
+    else
+    {
+      this.setState({
+        url:'/'
+      })
+    }
 		this.setState({
-			name:e.target.value
+      name:e.target.value
 		})
 	}
   showModal = () => {
@@ -54,7 +69,8 @@ export class Login extends React.Component {
   //     this.user = data.username;
       
   //  });
-  if(this.state.name==null){
+  if(this.state.name==null|| this.state.name===''){
+    console.log('Name is empty!!')
     document.getElementById('msg').style.visibility="visible"
       document.getElementById('msg').innerHTML="Username cannot be empty";
   }
@@ -75,25 +91,27 @@ export class Login extends React.Component {
         {/* <div className="header">Login</div> */}
         <div className="content">
           <div className="image">
-            <img src={image}/>
+            <img src={image} alt="CguessLogo"/>
           </div>
           <div className="form" >
             <div className="form-group">
-              <input onChange={e=>this.change(e)} type="text" name="username" placeholder="username" id="username" required="true" />
+              <input onChange={e=>this.change(e)} type="text" name="username" placeholder="username" id="username" required="required" />
             </div>
     <label className="alert alert-danger" style={{visibility:"hidden",fontSize:"15px"}}id="msg"></label>
           </div>
         </div>
         <div className="footer">
-        <Link to={{pathname:'/Game',nameprop:this.state.name}}>
-          <button  type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}} onClick={this.setUsername}>
+        <Link to={{pathname:this.state.url,nameprop:this.state.name,bclick:true}}>
+          <button  type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black"}} onClick={
+            this.setUsername   
+            }>
             Play
           </button>
           </Link>
          
         </div>
         <Modal show={this.state.show}>
-          <p>When its your turn to draw, you will have to choose a word from three options and visualize that word in 80 seconds, alternatively when somebody else is drawing you have to type your guess into the chat to gain points, be quick, the earlier you guess a word the more points you get!</p>
+          <p>Each player gets 60 seconds to guess the city based on the clues provided to them in a pictorial format and then  mark it on the map.The time taken  and the accuracy of the marked location play an important factor in determining your score!</p>
           <button onClick={this.hideModal} id="modal-close">close</button>
         </Modal>
         

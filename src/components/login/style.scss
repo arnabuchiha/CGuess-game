@@ -100,7 +100,7 @@ button {
   position: relative;
   display: inline-block;
   cursor: pointer;
-  outline: none;
+  outline: 0px transparent !important;
   border: 0;
   vertical-align: middle;
   text-decoration: none;

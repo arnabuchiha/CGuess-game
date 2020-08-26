@@ -1,8 +1,8 @@
 import React ,{ Component }  from "react";
-import sendImg from "../../assets/send.png";
-import socketIOClient from "socket.io-client";
+// import sendImg from "../../assets/send.png";
+// import socketIOClient from "socket.io-client";
 import "./Game.css"
-const ENDPOINT="localhost:5000";
+// const ENDPOINT="localhost:5000";
 //Add username retrival and replace in chat  
 class Chat extends Component{
     constructor(props){
@@ -57,7 +57,7 @@ class Chat extends Component{
                 <div className="input-group input-msg">
                 <input className="form-control" id="inputPassword2 " type="text" name="msg" placeholder="Chat now" />
                 <div className="input-group-append">
-        <button type="button" className="send-btn" type="submit">Send</button>
+        <button /*type="button"*/ className="send-btn" type="submit">Send</button>
             </div>
                 </div>
             </form>

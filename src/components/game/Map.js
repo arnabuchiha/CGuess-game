@@ -43,7 +43,7 @@ class Map extends Component{
                 this.geocoder.geocode({
                     'latLng': mapsMouseEvent.latLng
                   }, function(results, status) {
-                    if (status == window.google.maps.GeocoderStatus.OK) {
+                    if (status === window.google.maps.GeocoderStatus.OK) {
                       if (results[0]) {
                          
                         // alert(results[0].formatted_address)

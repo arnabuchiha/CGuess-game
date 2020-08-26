@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
 import "./Game.css";
 import Modal from "../Modal/Modal";
-import winnerImage from "../../assets/winner.png"
+// import winnerImage from "../../assets/winner.png"
 class Score extends Component{
     constructor(props){
         super(props);
