@@ -10,10 +10,10 @@ import Modal from "../Modal/Modal";
 class Game extends Component{
     constructor(props){
         super(props);
-        if(this.props.location.bclick===undefined )
-        {
-            window.location.href = '/';
-        }
+        // if(this.props.location.bclick===undefined )
+        // {
+        //     window.location.href = '/';
+        // }
         this.state={
             round:0,
             city:"_a__s",

@@ -8,7 +8,10 @@ class Chat extends Component{
     constructor(props){
         super(props);
         this.state={
-            msgList:"Welcome in CGuess!! Enjoy!!",
+            msgList:[{
+                user:"System",
+                message:"Welcome to CGuess!!"
+            }],
             textField:"Msg"
         }
     }
@@ -16,7 +19,7 @@ class Chat extends Component{
         this.props.socket.on("newmsg", data => {
             console.log(data)
             this.setState({
-                msgList:this.state.msgList+'\n'+data.user+' : '+data.message
+                msgList:[data,...this.state.msgList]
             })
             
         this.props.socket.on("joinMsg",data =>{
@@ -49,10 +52,21 @@ class Chat extends Component{
     }
     render(){
         return (<div>
-            <p className="msg">
+            {/* <p className="msg">
             {this.state.msgList}
-            </p>
-            
+            </p> */}
+            <ul className="msg">
+                {this.state.msgList.map(msg => (msg.user==="System")?(
+                    <li>
+                        <div style={{color:"green"}}>{msg.message}</div>
+                    </li>
+            ):(
+                <li>
+                        <div className="chatmsg-username">{msg.user+" : "}</div>
+                        <div className="chatmsg-message">{msg.message}</div>
+                </li>
+            ))}
+            </ul>
             <form onSubmit={(e)=>this.handleClick(e)} >
                 <div className="input-group input-msg">
                 <input className="form-control" id="inputPassword2 " type="text" name="msg" placeholder="Chat now" />
