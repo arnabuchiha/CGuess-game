@@ -175,3 +175,90 @@ button.send-btn:focus{
 .chatmsg-message{
     display: inline-block;
 }
+.loading-text{
+    margin: 0;
+  width: 150px;
+  height: 30px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  color: #111F4D;
+  text-align: center;
+  animation: t-stretch 1.5s linear 0.5s infinite forwards;
+}
+@keyframes t-stretch {
+  0% {
+      letter-spacing: 0px;
+  }
+  10% {
+      letter-spacing: 2px;
+  }
+  25% {
+      letter-spacing: 4px;
+  }
+  50% {
+      letter-spacing: 2px;
+  }
+  75% {
+      letter-spacing: 4px;
+  }
+  90% {
+      letter-spacing: 3px;
+  }
+  100% {
+      letter-spacing: 0px;
+  }
+}
+.loading-div {
+  width: 150px;
+  height: 210px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -105px;
+  margin-left: -60px;
+}
+.loading-svg {
+  margin-left: 30px;
+  width: 90px;
+  height: 180px;
+}
+.t {
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+}
+#s1 {
+  animation-delay: -4s;
+}
+#s2 {
+  animation-delay: -3.5s;
+}
+#s3 {
+  animation-delay: -3s;
+}
+#s4 {
+  animation-delay: -2.5s;
+}
+#s5 {
+  animation-delay: -2s;
+}
+#s6 {
+  animation-delay: -1.5s;
+}
+#s7 {
+  animation-delay: -1s;
+}
+#s8 {
+  animation-delay: -0.5s;
+}
+.sMove {
+  animation: s-turn 8s linear infinite forwards;
+}
+@keyframes s-turn {
+  0% {}
+  50% {
+      transform: rotateX(1turn); 
+  }
+  100% {}
+}

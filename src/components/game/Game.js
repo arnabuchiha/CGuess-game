@@ -20,10 +20,13 @@ class Game extends Component{
             fact:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit nisl, finibus vel pulvinar at, cursus id urna.",
             pageTime:'--',
             showFact:'Waiting',
-            showModal:false
+            showModal:false,
+            isConnected:false
         }
         this.ENDPOINT="localhost:5000";
-        this.socket = socketIOClient(this.ENDPOINT);
+        this.socket = socketIOClient(this.ENDPOINT,{
+            transports: ['polling']
+         });
         this.cookies=new Cookies();
         this.slide=0;
         // this.cookies.set('username',this.props.location.nameprop,{path:'/'});
@@ -68,10 +71,15 @@ class Game extends Component{
         this.setState({ showModal: false });
       };
     componentDidMount(){
+        
         this.socket.emit('setUsername',{
             username:this.cookies.get('username')
         })
-        
+        this.socket.on("connected",(data)=>{
+            this.setState({
+                isConnected:true
+            })
+        })
         this.socket.on("updates",(data) =>{
             var t=Number(data.timer)
             this.setState({
@@ -92,11 +100,19 @@ class Game extends Component{
             },1000)
 
         })
-
+        
+        
 
         // this.socket.on("round")
     }
+    componentDidUpdate(){
+        //back button handling
+        window.onpopstate=(e)=>{
+            this.socket.disconnect();
+        }
+    }
     render(){
+        if(this.state.isConnected)
         return(
             <div className="container-fluid">
                 <div className="row ">
@@ -145,6 +161,24 @@ class Game extends Component{
                     </div>
                 </div>
             </div>
+        )
+        return(
+            <div style={{width:"100vw",height:"100vh",backgroundColor:"white"}}>
+            <div className="loading-div">
+                <svg className="loading-svg">
+                    <circle id="s8" class="sMove t" cx="45" cy="50" r="45" fill="#020205"/>
+                    <polygon id="s7" class="sMove t" points="45,05 16,16 1,42 6,73 30,92 60,92 84,73 89,42 74,16" fill="#230B09"/>
+                    <polygon id="s6" class="sMove t" points="45,04 12,17 0,50 12,83 45,96 78,83 90,50 78,17" fill="#46130C"/>
+                    <polygon id="s5" class="sMove t" points="45,04 9,22 1,60 25,92 65,92 89,60 81,22" fill="#631B0E"/>
+                    <polygon id="s4" class="sMove t" points="45,03 4,26 4,74 45,97 86,74 86,26" fill="#812211"/>
+                    <polygon id="s3" class="sMove t" points="45,03 1,35 18,88 72,88 89,35" fill="#992813"/>
+                    <rect id="s2" class="sMove t" x="10" y="15" width="70" height="70" fill="#BD3116"/>
+                    <polygon id="s1" class="sMove t" points="45,05 2,80 88,80" fill="#E43A19"/>
+                </svg>
+                <h1 className="loading-text">LOADING</h1>
+            </div>
+            </div>
+
         )
     }
 }
