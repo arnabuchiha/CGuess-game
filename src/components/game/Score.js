@@ -48,10 +48,10 @@ class Score extends Component{
         })
     }
     winnerFunc=()=>{
-        this.score=-1;
-        this.winner="Nobody";
+        this.score=0;
+        this.winner="Everyone";
         this.state.players.forEach(e=>{
-            if(e.score>=this.score){
+            if(e.score>this.score){
                 this.winner=e.name;
                 this.score=e.score;
             }
@@ -60,10 +60,20 @@ class Score extends Component{
     render(){
         return(
             <div>
+                <div style={{fontSize:"30px",textAlign:"center"}}>Scoreboard</div>
                 <ul>
                     {this.state.players.map(item => (
                     <li className="list">
-                        <div className="">{item.name}   :  {item.score}</div>
+                        <div className="list-item">
+                        <img src={"https://robohash.org/"+item.avaterID} className="avatar"></img> 
+                        <div className="score_info">
+                            <div className="name">{item.name}</div>
+                            
+                        </div>
+                        <div className="scores">{item.score}</div>
+                        
+                        <div></div>
+                        </div>
                     </li>
                     ))}
                 </ul>
@@ -77,7 +87,6 @@ class Score extends Component{
                 {/* <div>
                 <p>When its your turn to draw, you will have to choose a word from three options and visualize that word in 80 seconds, alternatively when somebody else is drawing you have to type your guess into the chat to gain points, be quick, the earlier you guess a word the more points you get!</p>
                 </div> */}
-                <button onClick={this.score}>Check</button>
             </div>
         )
     }
