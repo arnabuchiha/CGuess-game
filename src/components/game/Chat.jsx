@@ -61,9 +61,20 @@ class Chat extends Component{
                         <div style={{color:"green"}}>{msg.message}</div>
                     </li>
             ):(
-                <li>
-                        <div className="chatmsg-username">{msg.user+" : "}</div>
-                        <div className="chatmsg-message">{msg.message}</div>
+                <li class="admin clearfix">
+                    <span class="chat-img left clearfix  mx-2">
+                    <img src={"https://robohash.org/"+msg.avaterID} alt="Admin" className="avatar img-circle" />
+                    </span>
+                    <div class="chat-body clearfix">
+                    <div class="header clearfix">
+                    <strong class="left primary-font">{msg.user}</strong>
+                    </div>
+                    <p>
+                    {msg.message}
+                    </p>
+                    </div>
+                        {/* <div className="chatmsg-username">{msg.user+" : "}</div>
+                        <div className="chatmsg-message">{msg.message}</div> */}
                 </li>
             ))}
             </ul>

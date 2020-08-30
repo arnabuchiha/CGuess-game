@@ -297,3 +297,54 @@ button.send-btn:focus{
 .scores{
     border-radius: 20px;
 }
+
+
+/*
+new chat css
+*/
+
+ .admin
+{
+    text-align: left ;
+    float: left;
+    margin:5px;
+}
+ .admin p
+{
+    text-align: left ;
+}
+.clearfix {
+    clear: both;
+  }
+
+   .chat-img
+  {
+      width: 50px;
+      height: 50px;
+  }
+   .img-circle
+  {
+      border-radius: 50%;
+      border: 1px solid #006060;
+  }
+   .left
+{
+    float: left;
+}
+ .chat-body
+{
+    display: inline-block;
+    max-width: 80%;
+    background-color: #E6D9A2;
+    border-radius: 12.5px;
+    padding: 15px;
+}
+ .chat-body strong
+{
+  color: #006060;
+}
+.chat-body p
+{
+    margin: 0;
+    /* color: #777777; */
+}
