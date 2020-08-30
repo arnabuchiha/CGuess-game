@@ -63,7 +63,7 @@ class Chat extends Component{
             ):(
                 <li class="admin clearfix">
                     <span class="chat-img left clearfix  mx-2">
-                    <img src={"https://robohash.org/"+msg.avaterID} alt="Admin" className="avatar img-circle" />
+                    <img src={"https://robohash.org/"+msg.avaterID+"?size=48x48"} alt="Admin" className="avatar img-circle" />
                     </span>
                     <div class="chat-body clearfix">
                     <div class="header clearfix">

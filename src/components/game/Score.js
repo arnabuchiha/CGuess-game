@@ -65,7 +65,7 @@ class Score extends Component{
                     {this.state.players.map(item => (
                     <li className="list">
                         <div className="list-item">
-                        <img src={"https://robohash.org/"+item.avaterID} className="avatar"></img> 
+                        <img src={"https://robohash.org/"+item.avaterID+"?size=48x48"} className="avatar"></img> 
                         <div className="score_info">
                             <div className="name">{item.name}</div>
                             
