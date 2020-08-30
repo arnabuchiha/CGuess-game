@@ -34,9 +34,10 @@
 }
 .list{
     background-color: #E6D9A2;
+    color: rgb(0, 96, 96);
     /* background-image: linear-gradient(-40deg,#cbb765,#665c33); */
     /* margin-right:15%; */
-    border: 1px solid black;
+    border: 1px solid #006060;
     margin-top: 5%;
     padding: 1%;
     /* padding-left: 2%; */
@@ -285,7 +286,6 @@ button.send-btn:focus{
     flex-direction: column;
     justify-content: right;
     line-height: 1;
-    color: #000;
     text-align: center;
 }
 .name{

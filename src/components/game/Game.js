@@ -121,7 +121,7 @@ class Game extends Component{
                     </div>
                     <div className="col-md map font-size">
                         <div className="d-flex justify-content-between" style={{marginBottom:"-2.5vh"}}>
-                        <div className="float-left bg-yellow m-1 p-1 rounded" style={{height:"1%"}}>
+                        <div className="float-left bg-yellow m-1 p-1 rounded" style={{height:"1%",color:"rgb(0, 96, 96)"}}>
                             Round {this.state.round}
                             {/* {this.props.location.nameprop} */}
                         </div>
@@ -132,13 +132,13 @@ class Game extends Component{
                             </figure>
                             {/* <p>{this.state.pageTime}sec</p> */}
                         </div>   
-                        <div className="float-right bg-yellow m-1 p-1 rounded" style={{height:"1%"}}>
+                        <div className="float-right bg-yellow m-1 p-1 rounded" style={{height:"1%",color:"rgb(0, 96, 96)"}}>
                             {this.state.city}
                         </div>
                         </div>
                         
                         <Map style={{position:"relative"}} socket={this.socket} />
-                            <button  type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black",fontSize:"16px",width:"100%",marginTop:"4%"}} onClick={()=>this.showModal(0)}>
+                            <button  type="button" className="big-button" style={{backgroundColor:"#BED9A6",fontFamily:"CustomFont",color:"black",fontSize:"16px",width:"100%",marginTop:"4%",color:"rgb(0, 96, 96)"}} onClick={()=>this.showModal(0)}>
                                 Show Clues
                             </button>
                         <Modal show={this.state.showModal} imageCSS={"modalImage"}>

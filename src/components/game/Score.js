@@ -60,7 +60,7 @@ class Score extends Component{
     render(){
         return(
             <div>
-                <div style={{fontSize:"30px",textAlign:"center"}}>Scoreboard</div>
+                <div style={{fontSize:"30px",textAlign:"center",color:"#006060"}}>Scoreboard</div>
                 <ul>
                     {this.state.players.map(item => (
                     <li className="list">
