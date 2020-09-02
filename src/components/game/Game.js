@@ -102,7 +102,10 @@ class Game extends Component{
         })
         
         
-
+        window.onbeforeunload = function() {
+            this.socket.disconnect();
+            return null;
+        }.bind(this);
         // this.socket.on("round")
     }
     componentDidUpdate(){
