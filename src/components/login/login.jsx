@@ -70,7 +70,6 @@ export class Login extends React.Component {
       
   //  });
   if(this.state.name==null|| this.state.name===''){
-    console.log('Name is empty!!')
     document.getElementById('msg').style.visibility="visible"
       document.getElementById('msg').innerHTML="Username cannot be empty";
   }
@@ -91,7 +90,7 @@ export class Login extends React.Component {
         {/* <div className="header">Login</div> */}
         <div className="content">
           <div className="image">
-            <img src={image} alt="CguessLogo"/>
+            <img src={image} alt="CGuess Logo"/>
           </div>
           <div className="form" >
             <div className="form-group">
