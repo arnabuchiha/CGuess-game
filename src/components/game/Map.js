@@ -62,7 +62,9 @@ class Map extends Component{
               });
             
 
-        })
+        },{
+            passive: true
+          })
         this.props.socket.on('markers',data=>{
             this.setMapOnAll(null);
             var i=0;
