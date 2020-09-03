@@ -28,6 +28,9 @@ class Game extends Component{
             transports: ['polling']
          });
         this.cookies=new Cookies();
+        if(!this.cookies.get('username')){
+            this.cookies.set('username','anonymous',{path:'/'});
+        }
         this.slide=0;
         // this.cookies.set('username',this.props.location.nameprop,{path:'/'});
     }

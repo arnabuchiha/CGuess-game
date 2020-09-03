@@ -57,7 +57,9 @@ class Map extends Component{
                 this.props.socket.emit('mapclicked',{location:position,username:this.cookies.get('username')})
                 console.log(position)
                 
-            });
+            },{
+                passive: true
+              });
             
 
         })
