@@ -1,7 +1,7 @@
-# <a href="https://cguess1.web.app/">
+<a href="https://cguess1.web.app/">
     <img src="https://i.imgur.com/7uTfVwp.png" alt="Cguess logo" title="Cguess" align="left" height="70" />
 </a>
-
+#  
 
 </br></br></br>This is an online multiplayer game in which every individual player has to guess the city using the clues provided . He also has to mark the location of that city on the map present on the screen. A player is alloted points on the basis of the accuracy and the time taken to ping the location on map. The game also contains a chat feature where a player can interact with other players present in the same lobby. 
 
