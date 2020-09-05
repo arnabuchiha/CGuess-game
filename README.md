@@ -10,7 +10,7 @@ This is an online multiplayer game in which every individual player has to guess
 ![Branch master](https://img.shields.io/badge/branch-master-brightgreen.svg?style=flat-square) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/arnabuchiha/CGuess-game/blob/master/LICENSE)
 
 <p align="center">
-Show some love 💜 and Star ⭐️ the Repository to support the project.
+Show some love ❤️ and Star ⭐️ the Repository to support the project.
 
 ## Installation
 
