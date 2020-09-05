@@ -1,7 +1,7 @@
 <a href="https://cguess1.web.app/">
     <img src="https://i.imgur.com/7uTfVwp.png" alt="Cguess logo" title="Cguess" align="left" height="70" />
 </a>
-</br></br></br>
+</br></br>
 
 ##           
 
