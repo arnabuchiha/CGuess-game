@@ -41,7 +41,7 @@ Show some love 💜 and Star ⭐️ the Repository to support the project.
 <img src="https://i.imgur.com/YsxxnEZ.png"/>
  
  
-<img src="https://i.imgur.com/expkjlX.png" />
+<img src="https://i.imgur.com/vAz5BIx.png" />
 
 
 
@@ -52,7 +52,7 @@ Show some love 💜 and Star ⭐️ the Repository to support the project.
 
  
  
- The Website is live <a href="https://cguess1.web.app/">here</a> :smiley: 
+ The Website is live <a href="https://cguess.vercel.app">here</a> :smiley: 
 
 
 
