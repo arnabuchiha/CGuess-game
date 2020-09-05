@@ -5,7 +5,7 @@
 
 ##           
 
-</br></br></br>This is an online multiplayer game in which every individual player has to guess the city using the clues provided . He also has to mark the location of that city on the map present on the screen. A player is alloted points on the basis of the accuracy and the time taken to ping the location on map. The game also contains a chat feature where a player can interact with other players present in the same lobby. 
+This is an online multiplayer game in which every individual player has to guess the city using the clues provided . He also has to mark the location of that city on the map present on the screen. A player is alloted points on the basis of the accuracy and the time taken to ping the location on map. The game also contains a chat feature where a player can interact with other players present in the same lobby. 
 
 ![Branch master](https://img.shields.io/badge/branch-master-brightgreen.svg?style=flat-square) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/arnabuchiha/CGuess-game/blob/master/LICENSE)
 
